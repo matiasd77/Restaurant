@@ -1,4 +1,4 @@
-package entity;
+package Restaurant.Project.Restaurant.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -7,16 +7,18 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Data
-@Table(name = "Waiters")
-public class Waiters {
+@Table(name = "Waiter")
+public class Waiter {
     @Id
-    @Column(name = "Id_Waiter")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idWaiter;
-    @Column(name = "Name")
+    private Integer id;
+
+    @Column(name = "name")
     private String name;
-    @Column(name = "Surname")
+
+    @Column(name = "surname")
     private String surname;
-    @Column(name = "Feedback")
+
+    @Column(name = "feedback")
     private Integer feedback;
 }

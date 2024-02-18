@@ -1,4 +1,4 @@
-package entity;
+package Restaurant.Project.Restaurant.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -9,15 +9,17 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "Sitting_Table")
-public class SittingTable {
+@Table(name = "receipt")
+public class Receipt {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idTable;
-    @Column(name = "Price")
+    private Integer id;
+
+    @Column(name = "price")
     private Double price;
+
     @OneToOne
-    private Waiters waiters;
-    @OneToMany
-    private List<Product> productList;
+    @JoinColumn(name = "id_waiter", referencedColumnName = "id")
+    private Waiter waiter;
 }

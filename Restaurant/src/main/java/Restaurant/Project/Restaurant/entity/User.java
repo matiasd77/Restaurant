@@ -1,27 +1,31 @@
-package entity;
+package Restaurant.Project.Restaurant.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name = "User")
+@Table(name = "users")
 @Entity
 @Data
 @NoArgsConstructor
 public class User {
     @Id
-    @Column(name = "Id_User")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idUser;
-    @Column(name = "Name")
+    private Integer id;
+
+    @Column(name = "name")
     private String name;
-    @Column(name = "Surname")
+
+    @Column(name = "surname")
     private String surname;
-    @Column(name = "Email", unique = true)
+
+    @Column(name = "email", unique = true)
     private String email;
-    @Column(name = "Password")
+
+    @Column(name = "password")
     private String password;
-    @Column(name = "Role")
+
+    @Column(name = "role")
     private String role;
 
 }

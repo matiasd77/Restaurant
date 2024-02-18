@@ -1,23 +1,25 @@
-package entity;
+package Restaurant.Project.Restaurant.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name = "Products")
+@Table(name = "produkt")
 @Entity
 @Data
 @NoArgsConstructor
 public class Product {
     @Id
-    @Column( name = "Id_Product")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idProduct;
-    @Column(name = "Name")
+    private Integer id;
+
+    @Column(name = "name")
     private String name;
-    @Column(name = "Category")
+
+    @Column(name = "category")
     private String category;
-    @Column(name = "Price")
+
+    @Column(name = "price")
     private Double price;
 
 }

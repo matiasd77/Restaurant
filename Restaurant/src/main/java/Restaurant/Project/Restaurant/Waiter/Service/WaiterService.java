@@ -17,35 +17,40 @@ public class WaiterService {
     private WaiterMapper waiterMapper;
 
 
-    public WaiterDTO save(WaiterDTO waiterDTO){
+    public WaiterDTO save(WaiterDTO waiterDTO) {
         return waiterMapper
-                .mapToDTO( waiterRepository.save(waiterMapper.mapToEntity(waiterDTO)));}
-        public List<Waiter> findAll() {
-            return waiterRepository.findAll();
-        }
-public Waiter findById(int id){
-        Waiter foundWaiter = waiterRepository.findById(id).orElseThrow(()-> new RuntimeException("Waiter with id: "+id+"was not found!"));
+                .mapToDTO(waiterRepository.save(waiterMapper.mapToEntity(waiterDTO)));
+    }
+
+    public List<Waiter> findAll() {
+        return waiterRepository.findAll();
+    }
+
+    public Waiter findById(int id) {
+        Waiter foundWaiter = waiterRepository.findById(id).orElseThrow(() -> new RuntimeException("Waiter with id: " + id + "was not found!"));
         return foundWaiter;
 
-}
-public Waiter updateById (int id,Waiter updatedWaiter){
-Waiter foundWaiter= waiterRepository.findById(id).orElseThrow(()->new RuntimeException("Waiter with id:"+id+"was not found!"));
-foundWaiter.setName(updatedWaiter.getName());
-foundWaiter.setSurname(updatedWaiter.getSurname());
-foundWaiter.setId(updatedWaiter.getId());
-foundWaiter.setFeedback(updatedWaiter.getFeedback());
+    }
 
-            Waiter savedWaiter =waiterRepository.save(foundWaiter);
-            return savedWaiter;
-}
-public void  deleteById(int id){
-        Waiter foundWaiter = waiterRepository.findById(id).orElseThrow(()-> new RuntimeException("Waiter with id: "+id+" was not found!"));
+    public Waiter updateById(int id, Waiter updatedWaiter) {
+        Waiter foundWaiter = waiterRepository.findById(id).orElseThrow(() -> new RuntimeException("Waiter with id:" + id + "was not found!"));
+        foundWaiter.setName(updatedWaiter.getName());
+        foundWaiter.setSurname(updatedWaiter.getSurname());
+        foundWaiter.setId(updatedWaiter.getId());
+        foundWaiter.setFeedback(updatedWaiter.getFeedback());
+
+        Waiter savedWaiter = waiterRepository.save(foundWaiter);
+        return savedWaiter;
+    }
+
+    public void deleteById(int id) {
+        Waiter foundWaiter = waiterRepository.findById(id).orElseThrow(() -> new RuntimeException("Waiter with id: " + id + " was not found!"));
         waiterRepository.delete(foundWaiter);
 
-}
-
-    public List<Waiter> getByName(String name){
-        return waiterRepository.findByName(name);
-}
-
     }
+
+    public List<Waiter> getByName(String name) {
+        return waiterRepository.findByName(name);
+    }
+
+}

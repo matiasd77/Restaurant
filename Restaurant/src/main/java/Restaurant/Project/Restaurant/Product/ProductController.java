@@ -32,5 +32,16 @@ public class ProductController {
         productService.deleteById(id);
         return "Product with id "  + id +  " was deleted ";
     }
+    @PreAuthorize("hasRole('USER')")
+    @PutMapping("/updateById/{id}")
+    public ResponseEntity<ProductDto> updateById(@PathVariable("id") Integer id, @RequestBody ProductDto productDto) {
+        return ResponseEntity.ok(productService.updateById(id, productDto));
+    }
+    @PreAuthorize("hasRole('USER')")
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/findById/{id}")
+     public ProductDto findById(@PathVariable("id")Integer id)  {
+         return productService.findById(id);
+     }
 }
 

@@ -1,10 +1,9 @@
 package Restaurant.Project.Restaurant.entity;
 
+import Restaurant.Project.Restaurant.entity.User;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @Data
@@ -23,7 +22,7 @@ public class Cart {
     private String paymentMethod;
 
     @OneToOne
-    @JoinColumn(name = "id_user",referencedColumnName = "id")
+    @JoinColumn(name = "id_user", referencedColumnName = "id")
     private User user;
 
 }

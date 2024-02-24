@@ -1,17 +1,22 @@
 package Restaurant.Project.Restaurant.service;
 
+import Restaurant.Project.Restaurant.Repository.UserRepository;
+import Restaurant.Project.Restaurant.dto.ReceiptDto;
+import Restaurant.Project.Restaurant.entity.Receipt;
 import Restaurant.Project.Restaurant.entity.User;
 import Restaurant.Project.Restaurant.dto.UserDto;
 import Restaurant.Project.Restaurant.mapper.UserMapper;
-import Restaurant.Project.Restaurant.user.repository.repository.UserRepository;
 import lombok.AllArgsConstructor;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-@AllArgsConstructor
+
 @Service
+@AllArgsConstructor
 public class UserService {
  private UserRepository userRepository;
  private UserMapper userMapper;
@@ -35,8 +40,13 @@ public class UserService {
   return savedUser;
   }
 
-  public List<User> findAll(){
-  return userRepository.findAll();
+  public List<UserDto> findAll(){
+   List<User> userList = userRepository.findAll();
+   List<UserDto> userDtoList = new ArrayList<>();
+   for (User user: userList) {
+    userDtoList.add(userMapper.mapToDto(user));
+   }
+   return userDtoList;
   }
 
   public void deleteUser(Integer id){

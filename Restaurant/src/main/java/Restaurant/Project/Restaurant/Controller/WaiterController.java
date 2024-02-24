@@ -6,6 +6,7 @@ import Restaurant.Project.Restaurant.entity.Waiter;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -15,14 +16,13 @@ import java.util.List;
 
 public class WaiterController {
     private WaiterService waiterService;
+
     @PostMapping("/save")
     public WaiterDTO create(@RequestBody WaiterDTO newWaiter) {
         return waiterService.save(newWaiter);
     }
-    @GetMapping("/findAll")
-    public List<Waiter> findAll() {
-        return waiterService.findAll();
-    }
+
+
     @GetMapping("/findById/{id}")
     public Waiter findById(@PathVariable("id") Integer id) {
         return waiterService.findById(id);

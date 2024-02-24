@@ -1,4 +1,4 @@
-package Restaurant.Project.Restaurant.user.repository.repository;
+package Restaurant.Project.Restaurant.Repository;
 
 import Restaurant.Project.Restaurant.entity.User;
 import java.util.List;

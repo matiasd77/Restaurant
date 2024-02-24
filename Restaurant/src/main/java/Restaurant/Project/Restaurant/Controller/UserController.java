@@ -2,26 +2,27 @@ package Restaurant.Project.Restaurant.Controller;
 
 import Restaurant.Project.Restaurant.entity.User;
 import Restaurant.Project.Restaurant.dto.UserDto;
-import Restaurant.Project.Restaurant.service.UserService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+import Restaurant.Project.Restaurant.service.UserService;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
+    @Autowired
     private UserService userService;
     @PostMapping("/save")
     public User create(@Valid @RequestBody UserDto newUser) {
         return userService.save(newUser);
     }
     @GetMapping("/findAll")
-    public List<User> findAll() {
+    public List<UserDto> findAll() {
         return userService.findAll();
     }
     @GetMapping("/findById/{id}")
@@ -33,7 +34,6 @@ public class UserController {
     public  User updateById(@PathVariable("id") Integer id,@Valid @RequestBody User user){
         return userService.updateUser(id,user);
     }
-
     @DeleteMapping("/deleteById/{id}")
     public String deleteById(@PathVariable("id")Integer id){
         userService.deleteUser(id);

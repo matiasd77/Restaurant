@@ -27,7 +27,7 @@ public class ReceiptController {
         return ReceiptService.findById(Id);
     }
 
-    @PutMapping("//updateById/{Id}")
+    @PutMapping("/updateById/{Id}")
     public ReceiptDto updateById(@PathVariable("Id") Integer id,@Valid @RequestBody ReceiptDto ReceiptDto) {
         return receiptService.updateById(id, ReceiptDto);
     }

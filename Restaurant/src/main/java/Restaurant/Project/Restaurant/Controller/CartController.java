@@ -23,8 +23,8 @@ public class CartController {
 
     @PostMapping("/save")
    // @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<CartDto> create(@Valid @RequestBody CartDto newCartDto, User user) {
-        return new ResponseEntity<>(cartService.save(newCartDto,user), HttpStatus.CREATED);
+    public ResponseEntity<CartDto> create(@Valid @RequestBody CartDto newCartDto) {
+        return new ResponseEntity<>(cartService.save(newCartDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/findAll")

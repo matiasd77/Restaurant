@@ -3,8 +3,7 @@ package Restaurant.Project.Restaurant.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 public class UserDto {
     public Integer id;
     public String name;

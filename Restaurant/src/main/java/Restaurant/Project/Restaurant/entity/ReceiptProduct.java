@@ -1,14 +1,27 @@
-package Restaurant.Project.Restaurant.dto;
+package Restaurant.Project.Restaurant.entity;
 
-import Restaurant.Project.Restaurant.entity.Product;
-import Restaurant.Project.Restaurant.entity.Receipt;
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class ReceiptProductDto {
+@Entity
+@Table(name = "receipt_product")
+public class ReceiptProduct {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Product product;
-    private Receipt receipt;
-    private  UserDto userDto;
 
+    @OneToOne
+    @JoinColumn(name = "id_product", referencedColumnName = "id")
+    private Product product;
+
+    @OneToOne
+    @JoinColumn(name = "id_receipt", referencedColumnName = "id")
+    private Receipt receipt;
+
+    public ReceiptProduct(){
+        
+    }
     public Integer getId() {
         return id;
     }
@@ -33,22 +46,9 @@ public class ReceiptProductDto {
         this.receipt = receipt;
     }
 
-    public UserDto getUserDto() {
-        return userDto;
-    }
-
-    public void setUserDto(UserDto userDto) {
-        this.userDto = userDto;
-    }
-
-    public ReceiptProductDto(Integer id, Product product, Receipt receipt, UserDto userDto) {
+    public ReceiptProduct(Integer id, Product product, Receipt receipt) {
         this.id = id;
         this.product = product;
         this.receipt = receipt;
-        this.userDto = userDto;
-    }
-
-    public  ReceiptProductDto(){
-
     }
 }

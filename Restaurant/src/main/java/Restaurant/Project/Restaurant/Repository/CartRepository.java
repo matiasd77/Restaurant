@@ -1,4 +1,4 @@
-package Restaurant.Project.Restaurant.Cart;
+package Restaurant.Project.Restaurant.Repository;
 
 import Restaurant.Project.Restaurant.entity.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;

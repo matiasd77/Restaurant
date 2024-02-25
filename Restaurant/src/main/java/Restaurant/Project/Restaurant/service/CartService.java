@@ -1,21 +1,30 @@
 package Restaurant.Project.Restaurant.service;
 
-import Restaurant.Project.Restaurant.Cart.CartRepository;
+import Restaurant.Project.Restaurant.Repository.CartRepository;
+import Restaurant.Project.Restaurant.Repository.UserRepository;
 import Restaurant.Project.Restaurant.dto.CartDto;
 import Restaurant.Project.Restaurant.entity.Cart;
 import Restaurant.Project.Restaurant.entity.User;
 import Restaurant.Project.Restaurant.mapper.CartMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 @Service
+@RequiredArgsConstructor
 public class CartService {
-    private CartRepository cartRepository;
-    private CartMapper cartMapper;
+    private final CartRepository cartRepository;
+    private final CartMapper cartMapper;
+    private final UserRepository userRepository;
 
-    public CartDto save(CartDto newCartDto, User user) {
+    public CartDto save(CartDto newCartDto) {
+
+        User user = userRepository.findById(newCartDto.getUser().getId())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
         Cart cart = CartMapper.mapToEntity(newCartDto,user);
+
         Cart savedCart = cartRepository.save(cart);
         return cartMapper.mapToDto(savedCart);
     }

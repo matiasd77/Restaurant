@@ -1,5 +1,6 @@
 package Restaurant.Project.Restaurant.service;
 
+import Restaurant.Project.Restaurant.Controller.exceptions.BadRequestException;
 import Restaurant.Project.Restaurant.Repository.UserRepository;
 import Restaurant.Project.Restaurant.dto.ReceiptDto;
 import Restaurant.Project.Restaurant.entity.Receipt;
@@ -27,10 +28,10 @@ public class UserService {
  }
 
  public User findById(Integer id){
-  return userRepository.findById(id).orElseThrow(()-> new RuntimeException("User with id: " +id+ "was not found!"));
+  return userRepository.findById(id).orElseThrow(()-> new BadRequestException("User with id: " +id+ "was not found!"));
  }
   public  User updateUser(Integer id,User updateUser){
-  User foundUser = userRepository.findById(id).orElseThrow(()-> new RuntimeException("User with id: " +id+ "was not found!"));
+  User foundUser = userRepository.findById(id).orElseThrow(()-> new BadRequestException("User with id: " +id+ "was not found!"));
   foundUser.setName(updateUser.getName());
   foundUser.setSurname(updateUser.getSurname());
   foundUser.setEmail(updateUser.getEmail());
@@ -50,10 +51,13 @@ public class UserService {
   }
 
   public void deleteUser(Integer id){
-    User founduser=userRepository.findById(id).orElseThrow(()->new RuntimeException("User with id: " +id+ "was not delete!"));
+    User founduser = userRepository.findById(id).orElseThrow(()->new BadRequestException("User with id: " +id+ "was not delete!"));
+    // kontrollo kemi apo skemi cart per kte user
+   // nqs kemi mos e fshi dhe hidh nje BadRequestException me mesazhin "Useri nuk mund te fshihet
+   // sepse ka blerje aktive"
     userRepository.delete(founduser);
   }
- public List<User> findByName(String name) {
+ public Optional<User> findByName(String name) {
   return userRepository.findByName(name);
  }
 

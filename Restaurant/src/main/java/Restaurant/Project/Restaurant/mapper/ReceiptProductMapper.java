@@ -1,26 +1,28 @@
 package Restaurant.Project.Restaurant.mapper;
 
 import Restaurant.Project.Restaurant.dto.ReceiptProductDto;
-import Restaurant.Project.Restaurant.entity.Receipt_Product;
+import Restaurant.Project.Restaurant.entity.ReceiptProduct;
+import Restaurant.Project.Restaurant.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ReceiptProductMapper {
-    public Receipt_Product mapToEntity(ReceiptProductDto receiptProductDto){
-        Receipt_Product receipt_product = new Receipt_Product();
-        receipt_product.setId(receipt_product.getId());
-        receipt_product.setReceipt(receipt_product.getReceipt());
-        receipt_product.setProduct(receipt_product.getProduct());
-        return receipt_product;
-
+    @Autowired
+    private UserMapper userMapper;
+    public static ReceiptProduct mapToEntity(ReceiptProductDto receiptProductDto, User user){
+        ReceiptProduct receiptProduct = new ReceiptProduct();
+        receiptProduct.setProduct(receiptProductDto.getProduct());
+        receiptProduct.setReceipt(receiptProduct.getReceipt());
+        receiptProduct.setId(receiptProduct.getId());
+        return receiptProduct;
     }
-    public ReceiptProductDto mapToDto(Receipt_Product receipt_product){
+    public ReceiptProductDto mapToDto(ReceiptProduct receiptProduct){
         ReceiptProductDto receiptProductDto = new ReceiptProductDto();
-        receiptProductDto.setId(receipt_product.getId());
-        receiptProductDto.setReceipt(receiptProductDto.getReceipt());
-        receiptProductDto.setProduct(receiptProductDto.getProduct());
+        receiptProductDto.setId(receiptProduct.getId());
+        receiptProductDto.setProduct(receiptProduct.getProduct());
+        receiptProductDto.setReceipt(receiptProduct.getReceipt());
         return receiptProductDto;
-
-
     }
+
 }

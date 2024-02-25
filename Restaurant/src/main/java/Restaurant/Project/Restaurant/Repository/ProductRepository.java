@@ -1,4 +1,4 @@
-package Restaurant.Project.Restaurant.Product;
+package Restaurant.Project.Restaurant.Repository;
 
 import Restaurant.Project.Restaurant.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;

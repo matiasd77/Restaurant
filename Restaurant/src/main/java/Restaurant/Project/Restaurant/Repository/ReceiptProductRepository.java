@@ -1,7 +1,7 @@
 package Restaurant.Project.Restaurant.Repository;
 
-import Restaurant.Project.Restaurant.entity.Receipt_Product;
+import Restaurant.Project.Restaurant.entity.ReceiptProduct;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ReceiptProductRepository extends JpaRepository<Receipt_Product, Integer> {
+public interface ReceiptProductRepository extends JpaRepository<ReceiptProduct, Integer> {
 }

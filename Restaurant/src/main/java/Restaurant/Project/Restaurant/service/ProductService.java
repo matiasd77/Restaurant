@@ -1,6 +1,6 @@
 package Restaurant.Project.Restaurant.service;
 
-import Restaurant.Project.Restaurant.Product.ProductRepository;
+import Restaurant.Project.Restaurant.Repository.ProductRepository;
 import Restaurant.Project.Restaurant.dto.ProductDto;
 import Restaurant.Project.Restaurant.entity.Product;
 import Restaurant.Project.Restaurant.mapper.ProductMapper;

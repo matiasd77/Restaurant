@@ -50,7 +50,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/findbyName/{name}")
-    public List<User> findByName(@PathVariable("name")  String name) {
+    public Optional<User> findByName(@PathVariable("name")  String name) {
         return userService.findByName(name);
     }
     @GetMapping(value = "/findbyRole/{role}")

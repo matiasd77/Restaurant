@@ -47,5 +47,14 @@ public class ProductController {
      public ProductDto findById(@PathVariable("id")Integer id)  {
          return productService.findById(id);
      }
+
+     @GetMapping("/max")
+     public ProductDto findMax(){
+        return productService.findMaxProduct();
+     }
+     @GetMapping("/min")
+     public  ProductDto findMin(){
+        return productService.findMinProduct();
+     }
 }
 

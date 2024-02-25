@@ -1,5 +1,6 @@
 package Restaurant.Project.Restaurant.service;
 
+import Restaurant.Project.Restaurant.Controller.exceptions.BadRequestException;
 import Restaurant.Project.Restaurant.Repository.ProductRepository;
 import Restaurant.Project.Restaurant.dto.ProductDto;
 import Restaurant.Project.Restaurant.entity.Product;
@@ -62,5 +63,12 @@ public class ProductService {
         Product foundProduct = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product with id:" + id + "was not found!"));
         productRepository.delete(foundProduct);
+    }
+
+    public ProductDto findMaxProduct() {
+        return productMapper.mapToDto(productRepository.findByMaxPrice().orElseThrow(() -> new BadRequestException("Ska rezultate")));
+    }
+    public  ProductDto findMinProduct(){
+        return productMapper.mapToDto(productRepository.findByMinPrice().orElseThrow(()->new BadRequestException("Not found")));
     }
 }
